@@ -2,22 +2,32 @@ import React from 'react'
 import ReactDom from 'react-dom'
 import './index.css'
 
-function formatName(user) {
-  return user.firstName + ' ' + user.lastName
+class Clock extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {date: new Date()}
+  }
+
+  render() {
+    console.log(this)
+    return (
+      <div>
+        <h1>Hello, World!</h1>
+        <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+      </div>
+    )
+  }
 }
 
-const user = {
-  firstName: 'Harper',
-  lastName: 'Perez'
+class App extends React.Component {
+  render() {
+    return (
+      <Clock />
+    )
+  }
 }
-
-const element = (
-  <h1 data-a="123" className={user}>
-    Hello, {formatName(user)}
-  </h1>
-)
 
 ReactDom.render(
-  element,
+  <App />,
   document.getElementById('root')
 )
