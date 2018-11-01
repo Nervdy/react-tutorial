@@ -2,7 +2,9 @@ import React from 'react'
 import ReactDom from 'react-dom'
 import './index.css'
 
-import Toggle from './Toggle.js'
+import Toggle from './Toggle'
+import Greeting from './Greeting'
+import MyButton from './MyButton'
 
 class Clock extends React.Component {
   constructor(props) {
@@ -53,12 +55,14 @@ class Clock extends React.Component {
     console.log('render')
     return (
       <div>
+        <Greeting isLoggedIn={true}/>
         <h1>Hello, World!</h1>
         <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
         <p>{this.state.counter}</p>
         <button onClick={this.tick}>tick</button>
         <br />
         <Toggle></Toggle>
+        i'm a <MyButton>Button</MyButton>
       </div>
     )
   }

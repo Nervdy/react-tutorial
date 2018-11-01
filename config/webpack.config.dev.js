@@ -213,6 +213,13 @@ module.exports = {
               
               plugins: [
                 [
+                  require.resolve('babel-plugin-styled-components'),
+                  { 
+                    ssr: true,
+                    displayName: true,
+                  }
+                ],
+                [
                   require.resolve('babel-plugin-named-asset-import'),
                   {
                     loaderMap: {
