@@ -71,7 +71,7 @@ class Clock extends React.Component {
           primary
         </MyButton>
         <MyButton>
-          Normal
+          <span style={{ fontWeight: 'bold' }}>Normal</span>
         </MyButton>
       </div>
     )

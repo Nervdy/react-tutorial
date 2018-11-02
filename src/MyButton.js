@@ -26,10 +26,23 @@ const Container = styled.div`
   box-shadow: 3px 3px 3px #ccc;
 `
 
+class Icon extends React.Component {
+  constructor(props) {
+    super(props)
+    console.log(this.props)
+  }
+
+  render() {
+    return (
+      <i>{this.props.children}</i>
+    )
+  }
+}
+
 export default function (props) {
   return (
     <Container>
-      <MyButton {...props}></MyButton>
+      <MyButton><Icon {...props}></Icon></MyButton>
     </Container>
   )
 }
