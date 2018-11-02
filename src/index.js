@@ -11,7 +11,8 @@ class Clock extends React.Component {
     super(props)
     this.state = {
       date: new Date(),
-      counter: 0
+      counter: 0,
+      isLoggedIn: false
     }
     this.step = 2
   }
@@ -55,14 +56,23 @@ class Clock extends React.Component {
     console.log('render')
     return (
       <div>
-        <Greeting isLoggedIn={true}/>
+        <Greeting isLoggedIn={this.state.isLoggedIn}/>
         <h1>Hello, World!</h1>
         <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
         <p>{this.state.counter}</p>
         <button onClick={this.tick}>tick</button>
         <br />
         <Toggle></Toggle>
-        i'm a <MyButton>Button</MyButton>
+        i'm a 
+        <MyButton 
+          onClick={() => this.setState((state) => ({isLoggedIn: !state.isLoggedIn}))}
+          borderRadius="6px"
+          primary={true}>
+          primary
+        </MyButton>
+        <MyButton>
+          Normal
+        </MyButton>
       </div>
     )
   }
