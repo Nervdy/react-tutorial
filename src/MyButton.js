@@ -1,4 +1,4 @@
-import React from 'react'
+
 import styled, { css } from 'styled-components'
 
 const MyButton = styled.button`
@@ -10,6 +10,7 @@ const MyButton = styled.button`
   padding: 0.25em 1em;
   cursor: pointer;
   outline: none;
+  font-size: 12px;
   
   ${props =>
     props.primary &&
@@ -20,29 +21,34 @@ const MyButton = styled.button`
   }
 `
 
-const Container = styled.div`
+// const Container = styled.div`
+//   display: inline-block;
+//   margin: 10px;
+//   box-shadow: 3px 3px 3px #ccc;
+// `
+
+// class Icon extends React.Component {
+//   constructor(props) {
+//     super(props)
+//     console.log(this.props)
+//   }
+
+//   render() {
+//     return (
+//       <i onClick={this.props.onClick}>{this.props.children}</i>
+//     )
+//   }
+// }
+
+// export default function (props) {
+//   return (
+//     <Container>
+//       <MyButton><Icon {...props} onClick={props.onClick}></Icon></MyButton>
+//     </Container>
+//   )
+// }
+
+export default styled(MyButton)`
   display: inline-block;
-  margin: 10px;
   box-shadow: 3px 3px 3px #ccc;
 `
-
-class Icon extends React.Component {
-  constructor(props) {
-    super(props)
-    console.log(this.props)
-  }
-
-  render() {
-    return (
-      <i>{this.props.children}</i>
-    )
-  }
-}
-
-export default function (props) {
-  return (
-    <Container>
-      <MyButton><Icon {...props}></Icon></MyButton>
-    </Container>
-  )
-}

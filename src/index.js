@@ -3,8 +3,10 @@ import ReactDom from 'react-dom'
 import './index.css'
 
 import Toggle from './Toggle'
-import Greeting from './Greeting'
 import MyButton from './MyButton'
+import LoginControl from './LoginControl'
+import WarningPage from './WarningPage'
+import Blog from './Blog'
 
 class Clock extends React.Component {
   constructor(props) {
@@ -56,32 +58,39 @@ class Clock extends React.Component {
     console.log('render')
     return (
       <div>
-        <Greeting isLoggedIn={this.state.isLoggedIn}/>
         <h1>Hello, World!</h1>
         <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
         <p>{this.state.counter}</p>
         <button onClick={this.tick}>tick</button>
         <br />
         <Toggle></Toggle>
-        i'm a 
         <MyButton 
           onClick={() => this.setState((state) => ({isLoggedIn: !state.isLoggedIn}))}
           borderRadius="6px"
           primary={true}>
           primary
         </MyButton>
-        <MyButton>
-          <span style={{ fontWeight: 'bold' }}>Normal</span>
-        </MyButton>
+        <MyButton as={Toggle}></MyButton>
+        <h1 children={"H1 Children"}>
+          H1 Component
+        </h1>
       </div>
     )
   }
 }
-
+console.log(Blog)
 class App extends React.Component {
   render() {
     return (
-      <Clock />
+      <div>
+        <Clock />
+        <h1>--------------</h1>
+        <LoginControl />
+        <h1>--------------</h1>
+        <WarningPage />
+        <h1>--------------</h1>
+        {Blog}
+      </div>
     )
   }
 }
