@@ -1,14 +1,16 @@
 import React from 'react'
 import ReactDom from 'react-dom'
-import './index.css'
+import styled from 'styled-components'
 
 import Toggle from './Toggle'
 import MyButton from './MyButton'
 import LoginControl from './LoginControl'
 import WarningPage from './WarningPage'
 import Blog from './Blog'
+import { NameForm, EssayForm, FlavorForm } from './FormComp'
 
 class Clock extends React.Component {
+  
   constructor(props) {
     super(props)
     this.state = {
@@ -78,18 +80,43 @@ class Clock extends React.Component {
     )
   }
 }
-console.log(Blog)
+
+
+const PageContaner = styled.div`
+  position: fixed;
+  display: inline-block;
+  width: 50%;
+  height: 100%;
+  margin: 0;
+  box-sizing: border-box;
+  padding: 10px 3em;
+  border: 2px dashed palevioletred;
+  overflow: auto;
+`
+const PageContanerRight = styled(PageContaner)`
+  margin-left: 50%;
+`
+
 class App extends React.Component {
   render() {
     return (
       <div>
-        <Clock />
-        <h1>--------------</h1>
-        <LoginControl />
-        <h1>--------------</h1>
-        <WarningPage />
-        <h1>--------------</h1>
-        {Blog}
+        <PageContaner>
+          <div>
+            <Clock />
+            <h1>--------------</h1>
+            <LoginControl />
+            <h1>--------------</h1>
+            <WarningPage />
+            <h1>--------------</h1>
+            {Blog}
+          </div>
+        </PageContaner>
+        <PageContanerRight>
+          <NameForm />
+          <EssayForm />
+          <FlavorForm test={[1,2,3]} />
+        </PageContanerRight>
       </div>
     )
   }
