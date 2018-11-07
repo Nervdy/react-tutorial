@@ -69,7 +69,7 @@ export class EssayForm extends Component {
 export class FlavorForm extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { value: ['coconut'] }
+    this.state = { value: ['coconut'], text: '123' }
 
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -107,6 +107,7 @@ export class FlavorForm extends React.Component {
           </select>
         </label>
         <input type="submit" value="Submit" />
+        <input type="text" defaultValue={this.state.text} ></input>
       </form>
     )
   }
