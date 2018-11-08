@@ -8,6 +8,7 @@ import LoginControl from './LoginControl'
 import WarningPage from './WarningPage'
 import Blog from './Blog'
 import { NameForm, EssayForm, FlavorForm } from './FormComp'
+import Calculator from './Temperature'
 
 class Clock extends React.Component {
   
@@ -116,6 +117,8 @@ class App extends React.Component {
           <NameForm />
           <EssayForm />
           <FlavorForm test={[1,2,3]} />
+          <h1>--------------</h1>
+          <Calculator />
         </PageContanerRight>
       </div>
     )
