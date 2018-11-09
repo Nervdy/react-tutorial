@@ -9,6 +9,7 @@ import WarningPage from './WarningPage'
 import Blog from './Blog'
 import { NameForm, EssayForm, FlavorForm } from './FormComp'
 import Calculator from './Temperature'
+import FilterableProductTable from './FilterableProductTable'
 
 class Clock extends React.Component {
   
@@ -119,6 +120,8 @@ class App extends React.Component {
           <FlavorForm test={[1,2,3]} />
           <h1>--------------</h1>
           <Calculator />
+          <h1>--------------</h1>
+          {FilterableProductTable}
         </PageContanerRight>
       </div>
     )
