@@ -10,6 +10,7 @@ import Blog from './Blog'
 import { NameForm, EssayForm, FlavorForm } from './FormComp'
 import Calculator from './Temperature'
 import FilterableProductTable from './FilterableProductTable'
+import AngryTitle from './HigherOrderComponent'
 
 class Clock extends React.Component {
   
@@ -122,6 +123,8 @@ class App extends React.Component {
           <Calculator />
           <h1>--------------</h1>
           {FilterableProductTable}
+          <h1>--------------</h1>
+          <AngryTitle className="asd">Whatever</AngryTitle>
         </PageContanerRight>
       </div>
     )
