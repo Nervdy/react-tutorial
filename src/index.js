@@ -10,7 +10,7 @@ import Blog from './Blog'
 import { NameForm, EssayForm, FlavorForm } from './FormComp'
 import Calculator from './Temperature'
 import FilterableProductTable from './FilterableProductTable'
-import AngryTitle from './HigherOrderComponent'
+import { AngryTitle, ReverseButton, ChildrenReverse } from './HigherOrderComponent'
 
 class Clock extends React.Component {
   
@@ -22,18 +22,6 @@ class Clock extends React.Component {
       isLoggedIn: false
     }
     this.step = 2
-  }
-
-  componentDidMount() {
-    this.timerID = setInterval(
-      () => {
-      },
-      1000
-    )
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.timerID)
   }
 
   componentWillUpdate() {
@@ -96,9 +84,11 @@ const PageContaner = styled.div`
   border: 2px dashed palevioletred;
   overflow: auto;
 `
-const PageContanerRight = styled(PageContaner)`
-  margin-left: 50%;
-`
+const PageContanerRight = ChildrenReverse(
+  styled(PageContaner)`
+    margin-left: 50%;
+  `
+)
 
 class App extends React.Component {
   render() {
@@ -125,6 +115,7 @@ class App extends React.Component {
           {FilterableProductTable}
           <h1>--------------</h1>
           <AngryTitle className="asd">Whatever</AngryTitle>
+          <ReverseButton>ReverseButton</ReverseButton>
         </PageContanerRight>
       </div>
     )
