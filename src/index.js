@@ -9,11 +9,10 @@ import WarningPage from './WarningPage'
 import Blog from './Blog'
 import { NameForm, EssayForm, FlavorForm } from './FormComp'
 import Calculator from './Temperature'
-import FilterableProductTable from './FilterableProductTable'
 import { AngryTitle, ReverseButton, ChildrenReverse } from './HigherOrderComponent'
 
+
 class Clock extends React.Component {
-  
   constructor(props) {
     super(props)
     this.state = {
@@ -91,7 +90,42 @@ const PageContanerRight = ChildrenReverse(
 )
 
 class App extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      showTable: false
+    }
+  }
+
+  FilterableProductTable = null
+
+  handleShowTableChange(event) {    
+    if (!this.state.showTable && !this.FilterableProductTable) {
+      import(/* webpackChunkName: "FilterableProductTable" */ './FilterableProductTable').then((module) => {
+        this.FilterableProductTable = module.default
+        
+        this.setState(state => {
+          return {showTable: true}
+        })
+      })
+    } else {
+      this.setState(state => {
+        return {showTable: !state.showTable}
+      })
+    }
+
+  }
+
+  shouldComponentUpdate() {
+    if (this.FilterableProductTable == null) return false
+    return true
+  }
+  
+  
   render() {
+    let FilterableProductTable = this.FilterableProductTable
+    if (!this.state.showTable) FilterableProductTable = null
+    
     return (
       <div>
         <PageContaner>
@@ -112,6 +146,7 @@ class App extends React.Component {
           <h1>--------------</h1>
           <Calculator />
           <h1>--------------</h1>
+          <MyButton onClick={this.handleShowTableChange.bind(this)}>showTable</MyButton>
           {FilterableProductTable}
           <h1>--------------</h1>
           <AngryTitle className="asd">Whatever</AngryTitle>
