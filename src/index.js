@@ -1,16 +1,16 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import ReactDom from 'react-dom'
 import styled from 'styled-components'
 
-import Toggle from './Toggle'
 import MyButton from './MyButton'
 import LoginControl from './LoginControl'
 import WarningPage from './WarningPage'
 import Blog from './Blog'
 import { NameForm, EssayForm, FlavorForm } from './FormComp'
-import Calculator from './Temperature'
 import { AngryTitle, ReverseButton, ChildrenReverse } from './HigherOrderComponent'
 
+const Toggle = React.lazy(() => import(/* webpackChunkName: "Toggle" */ './Toggle'))
+const Calculator = React.lazy(() => import(/* webpackChunkName: "Temperature" */ './Temperature'))
 
 class Clock extends React.Component {
   constructor(props) {
@@ -55,14 +55,16 @@ class Clock extends React.Component {
         <p>{this.state.counter}</p>
         <button onClick={this.tick}>tick</button>
         <br />
-        <Toggle></Toggle>
+        <Suspense fallback={<div>Loadingiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</div>}>
+          <Toggle></Toggle>
+        </Suspense>
         <MyButton 
           onClick={() => this.setState((state) => ({isLoggedIn: !state.isLoggedIn}))}
           borderRadius="6px"
           primary={true}>
           primary
         </MyButton>
-        <MyButton as={Toggle}></MyButton>
+        {/* <MyButton as={Toggle}></MyButton> */}
         <h1 children={"H1 Children"}>
           H1 Component
         </h1>
@@ -99,12 +101,12 @@ class App extends React.Component {
 
   FilterableProductTable = null
 
-  handleShowTableChange(event) {    
+  handleShowTableChange() {    
     if (!this.state.showTable && !this.FilterableProductTable) {
       import(/* webpackChunkName: "FilterableProductTable" */ './FilterableProductTable').then((module) => {
         this.FilterableProductTable = module.default
         
-        this.setState(state => {
+        this.setState(() => {
           return {showTable: true}
         })
       })
@@ -120,7 +122,6 @@ class App extends React.Component {
     if (this.FilterableProductTable == null) return false
     return true
   }
-  
   
   render() {
     let FilterableProductTable = this.FilterableProductTable
@@ -144,7 +145,9 @@ class App extends React.Component {
           <EssayForm />
           <FlavorForm test={[1,2,3]} />
           <h1>--------------</h1>
-          <Calculator />
+          <Suspense fallback={<div>Loadingiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</div>}>
+            <Calculator />
+          </Suspense>
           <h1>--------------</h1>
           <MyButton onClick={this.handleShowTableChange.bind(this)}>showTable</MyButton>
           {FilterableProductTable}
