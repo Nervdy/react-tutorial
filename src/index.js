@@ -91,15 +91,20 @@ const PageContanerRight = ChildrenReverse(
   `
 )
 
+const ThemeContext = React.createContext('primary')
+console.log(ThemeContext)
+
 class App extends React.Component {
+  FilterableProductTable = null
+
+  static contextType = ThemeContext
+
   constructor(props) {
     super(props)
     this.state = {
       showTable: false
     }
   }
-
-  FilterableProductTable = null
 
   handleShowTableChange() {    
     if (!this.state.showTable && !this.FilterableProductTable) {
@@ -124,6 +129,7 @@ class App extends React.Component {
   }
   
   render() {
+    console.log(this.context)
     let FilterableProductTable = this.FilterableProductTable
     if (!this.state.showTable) FilterableProductTable = null
     
@@ -152,15 +158,21 @@ class App extends React.Component {
           <MyButton onClick={this.handleShowTableChange.bind(this)}>showTable</MyButton>
           {FilterableProductTable}
           <h1>--------------</h1>
-          <AngryTitle className="asd">Whatever</AngryTitle>
-          <ReverseButton>ReverseButton</ReverseButton>
+          <AngryTitle className="AngryTitle">Whatever</AngryTitle>
+          <ReverseButton primary={this.context && true}>ReverseButton</ReverseButton>
         </PageContanerRight>
       </div>
     )
   }
 }
 
+
+
 ReactDom.render(
-  <App />,
+  (
+    <ThemeContext.Provider value="normal">
+      <App />
+    </ThemeContext.Provider>
+  ),
   document.getElementById('root')
 )
