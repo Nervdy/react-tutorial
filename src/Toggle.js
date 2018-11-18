@@ -5,7 +5,7 @@ export default class Toggle extends Component {
     super(props)
     console.log(props)
     console.log(props === this.props)
-    this.state = {isToggleOn: true}
+    this.state = { isToggleOn: true }
   }
 
   handleClick(...a) {

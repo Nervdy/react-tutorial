@@ -3,7 +3,7 @@ import React from 'react'
 function Blog(props) {
   const sidebar = (
     <ul>
-      {props.posts.map(post => 
+      {props.posts.map(post =>
         <li key={post.id}>
           {post.title}
         </li>
@@ -11,25 +11,25 @@ function Blog(props) {
     </ul>
   )
 
-  const content = props.posts.map(post => 
+  const content = props.posts.map(post =>
     <div key={post.id}>
-      <h3>{ post.title }</h3>
-      <p>{ post.content }</p>
+      <h3>{post.title}</h3>
+      <p>{post.content}</p>
     </div>
   )
 
   return (
     <div>
-      { sidebar }
+      {sidebar}
       <hr />
-      { content }
+      {content}
     </div>
   )
 }
 
 const posts = [
-  {id: 1, title: 'Hello World', content: 'Welcome to learning React!'},
-  {id: 2, title: 'Installation', content: 'You can install React from npm.'}
+  { id: 1, title: 'Hello World', content: 'Welcome to learning React!' },
+  { id: 2, title: 'Installation', content: 'You can install React from npm.' }
 ]
 
-export default Blog({posts})
+export default Blog({ posts })

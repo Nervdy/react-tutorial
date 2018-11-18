@@ -58,14 +58,14 @@ class Clock extends React.Component {
         <Suspense fallback={<div>Loadingiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</div>}>
           <Toggle></Toggle>
         </Suspense>
-        <MyButton 
-          onClick={() => this.setState((state) => ({isLoggedIn: !state.isLoggedIn}))}
+        <MyButton
+          onClick={() => this.setState((state) => ({ isLoggedIn: !state.isLoggedIn }))}
           borderRadius="6px"
           primary={true}>
           primary
         </MyButton>
         {/* <MyButton as={Toggle}></MyButton> */}
-        <h1 children={"H1 Children"}>
+        <h1 children={'H1 Children'}>
           H1 Component
         </h1>
       </div>
@@ -106,18 +106,18 @@ class App extends React.Component {
     }
   }
 
-  handleShowTableChange() {    
+  handleShowTableChange() {
     if (!this.state.showTable && !this.FilterableProductTable) {
       import(/* webpackChunkName: "FilterableProductTable" */ './FilterableProductTable').then((module) => {
         this.FilterableProductTable = module.default
-        
+
         this.setState(() => {
-          return {showTable: true}
+          return { showTable: true }
         })
       })
     } else {
       this.setState(state => {
-        return {showTable: !state.showTable}
+        return { showTable: !state.showTable }
       })
     }
 
@@ -127,12 +127,12 @@ class App extends React.Component {
     if (this.FilterableProductTable == null) return false
     return true
   }
-  
+
   render() {
     console.log(this.context)
     let FilterableProductTable = this.FilterableProductTable
     if (!this.state.showTable) FilterableProductTable = null
-    
+
     return (
       <div>
         <PageContaner>
@@ -149,7 +149,7 @@ class App extends React.Component {
         <PageContanerRight>
           <NameForm />
           <EssayForm />
-          <FlavorForm test={[1,2,3]} />
+          <FlavorForm test={[1, 2, 3]} />
           <h1>--------------</h1>
           <Suspense fallback={<div>Loadingiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii</div>}>
             <Calculator />
