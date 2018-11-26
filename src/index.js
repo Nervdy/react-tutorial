@@ -146,7 +146,7 @@ class App extends React.Component {
             {Blog}
           </div>
         </PageContaner>
-        <PageContanerRight>
+        {/* <PageContanerRight>
           <NameForm />
           <EssayForm />
           <FlavorForm test={[1, 2, 3]} />
@@ -160,7 +160,7 @@ class App extends React.Component {
           <h1>--------------</h1>
           <AngryTitle className="AngryTitle">Whatever</AngryTitle>
           <ReverseButton primary={this.context && true}>ReverseButton</ReverseButton>
-        </PageContanerRight>
+        </PageContanerRight> */}
       </div>
     )
   }
