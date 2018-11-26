@@ -17,8 +17,7 @@ const MyButton = styled.button`
     css`
       background: palevioletred;
       color: white;
-    `
-  }
+    `}
 `
 
 // const Container = styled.div`

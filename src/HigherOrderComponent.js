@@ -1,5 +1,5 @@
 import React, { Children } from 'react'
-import MyButton from './MyButton';
+import MyButton from './MyButton'
 
 const yell = (PassedComponent) =>
   ({ children, ...props }) => <PassedComponent {...props}> {children.toUpperCase()}! </PassedComponent>
