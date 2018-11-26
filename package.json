@@ -1,6 +1,7 @@
 {
   "name": "react-tutorial",
   "version": "0.1.0",
+  "homepage": "https://nervdy.netlify.com/",
   "private": true,
   "dependencies": {
     "@babel/core": "7.1.0",
