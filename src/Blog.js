@@ -1,5 +1,4 @@
 import React from 'react'
-
 function Blog(props) {
   const sidebar = (
     <ul>
