@@ -1,8 +1,7 @@
-
 import styled, { css } from 'styled-components'
 
 const MyButton = styled.button`
-  background: transparent;
+background: transparent;
   border-radius: ${props => props.borderRadius || '3px'};
   border: 2px solid palevioletred;
   color: palevioletred;
